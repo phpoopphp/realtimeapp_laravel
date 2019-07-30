@@ -22,3 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Route::get('/questions/{question}', 'QuestionController@show');
 
 Route::apiResource('/questions','QuestionController');
+
+Route::apiResource("/category",'CategoryController');
