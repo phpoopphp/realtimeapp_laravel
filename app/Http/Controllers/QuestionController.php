@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt', ['only' => ['store','update','destroys']]);
+    }
 
     public function index()
     {

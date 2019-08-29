@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Response;
 
 class ReplyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt', ['only' => ['store','update','destroys']]);
+    }
     /**
      * Display a listing of the resource.
      *

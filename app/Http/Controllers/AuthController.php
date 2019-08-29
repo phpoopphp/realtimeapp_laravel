@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {
+
+
+    public function signup()
+    {
+
+        User::create(request()->all());
+//        return response()->json(['message'=>'User created'],201);
+        return $this->login();
+    }
+
+
     /**
      * Create a new AuthController instance.
      *
@@ -14,8 +26,9 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth:api', ['except' => ['login']]);
-        $this->middleware('jwt', ['except' => ['login']]);
+
+//        $this->middleware('auth:api', ['except' => ['login','signup']]);
+        $this->middleware('jwt', ['except' => ['login','signup']]);
     }
 
     /**
